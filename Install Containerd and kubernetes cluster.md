@@ -118,3 +118,24 @@ Ref: Install network plugin
 https://kubernetes.io/docs/concepts/cluster-administration/addons/
 ```
 
+## Step 8 Install network plugin calico
+
+```
+curl https://projectcalico.docs.tigera.io/manifests/calico.yaml -O
+```
+
+```
+- name: IP_AUTODETECTION_METHOD
+  value: "interface=eth0"
+- name: FELIX_XDPENABLED
+  value: "false"
+- name: CALICO_IPV4POOL_CIDR
+  value: "10.233.64.0/16"
+```
+
+```
+kubectl apply -f calico.yaml
+```
+
+
+
