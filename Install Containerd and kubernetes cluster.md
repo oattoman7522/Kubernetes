@@ -102,6 +102,15 @@ kubeadm init --apiserver-advertise-address=(IP of masternode) --pod-network-cidr
 ```
 
 ```
+cd /etc/crictl.yml
+runtime-endpoint: unix:///run/containerd/containerd.sock
+```
+
+```
+kubeadm init --cri-socket /run/containerd/containerd.sock --pod-network-cidr=10.233.64.0/16 --control-plane-endpoint=10.99.71.89:6444 --upload-certs
+```
+
+```
 mkdir -p $HOME/.kube
 sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
