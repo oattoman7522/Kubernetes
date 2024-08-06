@@ -1,12 +1,16 @@
-'''
+## Step 1 Install nginx ingress
+
+```
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.6.4/deploy/static/provider/baremetal/deploy.yaml
-'''
+```
 
-'''
+## Step 2 Config ingress controller
+
+```
 kubectl edit deploy ingress-nginx-controller -n ingress-nginx
-'''
+```
 
-'''
+```
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -145,14 +149,17 @@ spec:
         secret:
           defaultMode: 420
           secretName: ingress-nginx-admission
-'''
+```
 
-'''
+## Step 3 Scale ingress controller
+```
 kubectl scale deploy -n ingress-nginx ingress-nginx-controller --replicas=4
 kubectl get po -n ingress-nginx
-'''
+```
 
-'''
+## Step 4 Test ingress controller
+
+```
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -245,9 +252,14 @@ spec:
             name: nginx
             port:
               number: 80
-'''
+```
 
-'''
+## Step 5 Test access 
+
+```
 curl http://172.20.185.40/nginx
 curl http://172.20.185.40/test
-'''
+```
+
+
+
