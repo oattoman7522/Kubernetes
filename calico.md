@@ -1,5 +1,5 @@
 ```
-curl https://projectcalico.docs.tigera.io/manifests/calico.yaml -O
+curl https://calico-v3-25.netlify.app/archive/v3.25/manifests/calico.yaml -O
 ```
 
 ```
